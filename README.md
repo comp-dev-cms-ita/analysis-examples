@@ -1,1 +1,53 @@
-# analysis-examples
+# Analysis Examples
+This repo contains some examples of analysis performed on the Analysis Facility using RDataFrame distributed on Dask on top of HTCondor
+
+## How to access analysis facility
+- Go to [https://jhub.90.147.75.109.myip.cloud.infn.it/](https://jhub.90.147.75.109.myip.cloud.infn.it/)
+- Login with your Dodas credentials (to get them, register at https://dodas-iam.cloud.cnaf.infn.it/start-registration)
+- Choose the JupyterLab image (in order to be able to use distribution on Dask on top of HTCondor, choose ```dodasts/jlab-htc-dask:v0.1.3-dask``` image) and set memory and CPU
+- Once deployed, open a new terminal and type 
+  ``` 
+  oidc-token infncloud > ~/.token 
+  ```
+- To test that you can reach the HTCondor deployment: 
+  ```
+  condor_q
+  ```
+
+## Usage of RDataFrame distributed on Dask, on top of HTCondor
+- Open a a new Python3 notebook
+- Deploy a Dask cluster on HTCondor: 
+  ```
+  from dask_remote_jobqueue import RemoteHTCondor
+  cluster = RemoteHTCondor()
+  ```
+- Once deployed, initialize the Dask client:
+  ```
+  from dask.distributed import Client
+  client = Client(address="tcp://127.0.0.1:"+str(cluster.sched_port))
+  ```
+- Insert the declaration of your custom functions inside an initialization function:
+  ```
+  import ROOT
+  
+  text_file = open("postselection.h", "r")
+  data = text_file.read()
+  distributed = ROOT.RDF.Experimental.Distributed
+
+  def my_initialization_function():
+      ROOT.gInterpreter.Declare('{}'.format(data))
+    
+  distributed.initialize(my_initialization_function)
+  ```
+- Create a distributed RDataFrame reading a list of samples:
+  ```
+  chain = [<path to 1st .root file>, <path to 2nd .root file>, ...]
+
+  df = ROOT.RDF.Experimental.Distributed.Dask.RDataFrame("<name of tree>",
+                chain,
+                npartitions=<number of partitions>,
+                daskclient=client)
+  ```
+
+## Minimal example
+[Here](MinimalExample.ipynb) you can find a simple notebook where a very simple distributed RDataFrame analysis is run on a small OpenData sample using a Dask deployment on HTCondor.
