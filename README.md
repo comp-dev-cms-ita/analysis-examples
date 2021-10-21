@@ -16,13 +16,27 @@ This repo contains some examples of analysis performed on the Analysis Facility 
 
 ## Usage of RDataFrame distributed on Dask, on top of HTCondor
 - Open a a new Python3 notebook
-- Deploy a Dask cluster on HTCondor. This can be done  via the Dask JupyterLab plugin: 
+- Deploy a Dask cluster on HTCondor. This can be done via the Dask JupyterLab plugin:
+  - click on ```+new``` button:
+  
+    ![dask_plugin](dask_plugin.PNG)
+    
+  - choose where to deploy the cluster:
+  
+    ![dask_choice](dask_choice.png)
+    
+  - and wait for the scheduler to start to run. The interface will contain all info about the cluster and two buttons for scaling and shutdown:
+
+    ![dask_deployed](dask_deployed.png)
 
 - Once deployed, initialize the Dask client:
   ```
   from dask.distributed import Client
-  client = Client(address="tcp://127.0.0.1:"+str(cluster.sched_port))
+  sched_port = 37470
+  client = Client(address="tcp://127.0.0.1:"+str(sched_port))
   ```
+  where sched_port should correspond to the Dask scheduler port you find in the Dask plugin interface.
+  
 - Insert the declaration of your custom functions inside an initialization function:
   ```
   import ROOT
