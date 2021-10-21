@@ -2,17 +2,9 @@
 This repo contains some examples of analysis performed on the Analysis Facility using RDataFrame distributed on Dask on top of HTCondor
 
 ## How to access analysis facility
-- Go to [https://jhub.90.147.75.109.myip.cloud.infn.it/](https://jhub.90.147.75.109.myip.cloud.infn.it/)
-- Login with your Dodas credentials (to get them, register at https://dodas-iam.cloud.cnaf.infn.it/start-registration)
-- Choose the JupyterLab image (in order to be able to use distribution on Dask on top of HTCondor, choose ```dodasts/jlab-htc-dask:v0.1.3-dask``` image) and set memory and CPU
-- Once deployed, open a new terminal and type 
-  ``` 
-  oidc-token infncloud > ~/.token 
-  ```
-- To test that you can reach the HTCondor deployment: 
-  ```
-  condor_q
-  ```
+- Go to [https://jhub.131.154.96.124.myip.cloud.infn.it/](https://jhub.131.154.96.124.myip.cloud.infn.it/)
+- Login using the CMS INDIGO IAM service with CERN SSO (https://cms-auth.web.cern.ch/login)
+- Choose the JupyterLab image (in order to be able to use distribution on Dask on top of HTCondor, use the suggested one) and set memory and CPU
 
 ## Usage of RDataFrame distributed on Dask, on top of HTCondor
 - Open a a new Python3 notebook
