@@ -16,11 +16,8 @@ This repo contains some examples of analysis performed on the Analysis Facility 
 
 ## Usage of RDataFrame distributed on Dask, on top of HTCondor
 - Open a a new Python3 notebook
-- Deploy a Dask cluster on HTCondor: 
-  ```
-  from dask_remote_jobqueue import RemoteHTCondor
-  cluster = RemoteHTCondor()
-  ```
+- Deploy a Dask cluster on HTCondor. This can be done  via the Dask JupyterLab plugin: 
+
 - Once deployed, initialize the Dask client:
   ```
   from dask.distributed import Client
