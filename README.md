@@ -17,7 +17,7 @@ This repo contains some examples of analysis performed on the Analysis Facility 
   
     ![dask_choice](dask_choice.png)
     
-  - and wait for the scheduler to start to run. The interface will contain all info about the cluster and two buttons for scaling and shutdown:
+  - and wait for the scheduler to start to run. The interface will contain all info about the cluster and three buttons for setting up a client, scaling and shutdown:
 
     ![dask_deployed](dask_deployed.png)
 
