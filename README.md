@@ -21,13 +21,13 @@ This repo contains some examples of analysis performed on the Analysis Facility 
 
     ![dask_deployed](dask_deployed.png)
 
-- Once deployed, initialize the Dask client:
+- Once deployed, initialize the Dask client: pushing ```<>``` setup automatically a cell to do this, that will look like this:
   ```
   from dask.distributed import Client
-  sched_port = 37470
-  client = Client(address="tcp://127.0.0.1:"+str(sched_port))
+
+  client = Client("localhost:37470")
+  client
   ```
-  where sched_port should correspond to the Dask scheduler port you find in the Dask plugin interface.
   
 - Insert the declaration of your custom functions inside an initialization function:
   ```
