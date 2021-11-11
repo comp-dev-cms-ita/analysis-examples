@@ -2,7 +2,7 @@
 This repo contains some examples of analysis performed on the Analysis Facility using RDataFrame distributed on Dask on top of HTCondor
 
 ## How to access analysis facility
-- Go to [](https://cms-it-hub.cloud.cnaf.infn.it/)
+- Go to https://cms-it-hub.cloud.cnaf.infn.it/
 - Login using the CMS INDIGO IAM service with CERN SSO (https://cms-auth.web.cern.ch/login)
 - Choose the JupyterLab image (in order to be able to use distribution on Dask on top of HTCondor, use the suggested one) and set memory and CPU
 
