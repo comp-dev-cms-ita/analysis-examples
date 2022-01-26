@@ -53,4 +53,4 @@ This repo contains some examples of analysis performed on the Analysis Facility 
   ```
 
 ## Minimal example
-[Here](notebooks/MinimalExample.ipynb) you can find a simple notebook where a very simple distributed RDataFrame analysis is run on a small OpenData sample using a Dask deployment on HTCondor.
+[Here](example_notebooks/MinimalExample.ipynb) you can find a simple notebook where a very simple distributed RDataFrame analysis is run on a small OpenData sample using a Dask deployment on HTCondor.
