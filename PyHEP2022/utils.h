@@ -74,22 +74,6 @@ float deltaR(float eta1, float phi1, float eta2, float phi2){
     return hypot(eta1 - eta2, deltaPhi(phi1, phi2)); 
 }
 
-
-bool LepVetoMu(rvec_i Muon_idx, rvec_f Electron_pt, rvec_f Electron_eta, rvec_b Electron_mvaFall17V2Iso_WPL, rvec_f Electron_jetRelIso, rvec_f Muon_pt, rvec_f Muon_eta, rvec_f Muon_pfRelIso04_all, rvec_b Muon_looseId)
-{
-    bool IsEleVetoPassed = true;
-    bool IsMuVetoPassed = true;
-    for (size_t i = 0; i < Electron_pt.size(); i++) {
-        if(Electron_mvaFall17V2Iso_WPL[i] && Electron_pt[i] > PT_CUT_LEP_VETO_ELE && abs(Electron_eta[i]) < ETA_CUT_LEP_VETO_ELE && !(abs(Electron_eta[i])>1.4442 && abs(Electron_eta[i])<1.566) && Electron_jetRelIso[i] < REL_ISO_CUT_LEP_VETO_ELE) IsEleVetoPassed = false;
-    }
-    if(IsEleVetoPassed == true){
-        for (size_t i = 0; i < Muon_pt.size(); i++) {
-            if(i != Muon_idx[0] && Muon_looseId[i] && Muon_pt[i] > PT_CUT_LEP_VETO_MU && abs(Muon_eta[i]) < ETA_CUT_LEP_VETO_MU && Muon_pfRelIso04_all[i] < REL_ISO_CUT_LEP_VETO_MU) IsMuVetoPassed = false;
-        }
-    }
-    return IsEleVetoPassed && IsMuVetoPassed;
-}
-
 RVec<size_t> GoodJets(rvec_f eta, rvec_f pt, rvec_i puId){
    RVec<int> idx;
    for (size_t i = 0; i < pt.size(); i++) {
