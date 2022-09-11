@@ -1,6 +1,3 @@
-#include "ROOT/RDataFrame.hxx"
-#include "ROOT/RVec.hxx"
-
 /// Header file with functions needed to execute the Python version of
 /// postselection step of the analysis. The header is declared to the
 /// ROOT C++ interpreter prior to the start of the analysis via the
@@ -38,7 +35,6 @@ const float PT_CUT_MU=  30;
 const float ETA_CUT_MU= 2.4;
 const float ISO_CUT_MU= 0.15;
 
-//const size_t PT_CUT_ELE=  35;
 const float PT_CUT_ELE_UL2016=  30;
 const float PT_CUT_ELE_UL2017=  38;
 const float PT_CUT_ELE_UL2018=  35;
@@ -55,8 +51,6 @@ const float PT_CUT_LEP_VETO_MU=         10;
 const float ETA_CUT_LEP_VETO_MU=        2.4;
 
 const float DR_OVERLAP_CONE_TAU=        0.5;
-//const float DR_OVERLAP_CONE_TAU=        0.2;
-
 const float DR_OVERLAP_CONE_OTHER=      0.4;
 
 const float PT_CUT_JET= 30;
@@ -64,51 +58,10 @@ const float ETA_CUT_JET=5;
 
 const float DELTAETA_JJ_CUT=2.5;
 
-const float BTAG_PT_CUT =   30;
-const float BTAG_ETA_CUT=   5;
-string BTAG_ALGO   =   "DeepFlv";
-string BTAG_WP     =   "M";
-const float BTAG_WP_VALUE = 0.3033;
-const float BTAG_WP_VALUE_LOOSE = 0.0521;
-
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_LOOSE_ELE_UL2016APV = 8;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_VETO_ELE_UL2016APV = 8;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_LOOSE_MU_UL2016APV = 4;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_VETO_MU_UL2016APV = 4;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_LOOSE_ELE_UL2016 = 4 ;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_VETO_ELE_UL2016 = 4;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_LOOSE_MU_UL2016 = 8;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_VETO_MU_UL2016 = 8;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_LOOSE_ELE_UL2017 = 16;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_VETO_ELE_UL2017 = 16;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_LOOSE_MU_UL2017 = 8;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_VETO_MU_UL2017 = 8;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_LOOSE_ELE_UL2018 = 16;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_VETO_ELE_UL2018 = 16;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_LOOSE_MU_UL2018 = 16;
-const size_t ID_TAU_RECO_DEEPTAU_VSJET_VETO_MU_UL2018 = 16;
-
-//const size_t ID_TAU_RECO_DEEPTAU_VSJET_VETO_ELE = 16;  //DUMMY!!!!!!!!
-//const size_t ID_TAU_RECO_DEEPTAU_VSJET_VETO_MU = 8; 
-
-//const size_t ID_TAU_RECO_DEEPTAU_VSJET_LOOSE_ELE = 16; //byDeepTau2017v2p1VSjet ID working points (deepTau2017v2p1): bitmask 1 = VVVLoose, 2 = VVLoose, 4 = VLoose, 8 = Loose, 16 = Medium, 32 = Tight, 64 = VTight, 128 = VVTight
-//const size_t ID_TAU_RECO_DEEPTAU_VSJET_LOOSE_MU = 8; //byDeepTau2017v2p1VSjet ID working points (deepTau2017v2p1): bitmask 1 = VVVLoose, 2 = VVLoose, 4 = VLoose, 8 = Loose, 16 = Medium, 32 = Tight, 64 = VTight, 128 = VVTight
-
-const size_t ID_TAU_RECO_DEEPTAU_VSJET=  64; //byDeepTau2017v2p1VSjet ID working points (deepTau2017v2p1): bitmask 1 = VVVLoose, 2 = VVLoose, 4 = VLoose, 8 = Loose, 16 = Medium, 32 = Tight, 64 = VTight, 128 = VVTight
-const size_t ID_TAU_RECO_DEEPTAU_VSELE=  4;  //byDeepTau2017v2p1VSe ID working points (deepTau2017v2p1): bitmask 1 = VVVLoose, 2 = VVLoose, 4 = VLoose, 8 = Loose, 16 = Medium, 32 = Tight, 64 = VTight, 128 = VVTight
-const size_t ID_TAU_RECO_DEEPTAU_VSMU=   8;  //byDeepTau2017v2p1VSmu ID working points (deepTau2017v2p1): bitmask 1 = VLoose, 2 = Loose, 4 = Medium, 8 = Tight
-
-const size_t ID_TAU_RECO_MVA=            8; //IsolationMVArun2v1DBoldDMwLT ID working point (2017v1): bitmask 1 = VVLoose, 2 = VLoose, 4 = Loose, 8 = Medium, 16 = Tight, 32 = VTight, 64 = VVTight
-const size_t ID_TAU_ANTIMU=              1; //Anti-muon discriminator V3: : bitmask 1 = Loose, 2 = Tight
-const size_t ID_TAU_ANTIELE=             2; //Anti-electron MVA discriminator V6 (2015): bitmask 1 = VLoose, 2 = Loose, 4 = Medium, 8 = Tight, 16 = VTight
 const float PT_CUT_TAU=30;
 const float ETA_CUT_TAU=2.3;
 const float M_JJ_CUT=   500;
 const float MET_CUT=    40;
-
-const string vsJetwp = "VTight";
-const string vsElewp = "VLoose";
-const string vsMuwp = "Tight";
 
 float deltaPhi (float phi1, float phi2){
     float dphi = (phi1-phi2);
@@ -183,7 +136,7 @@ RVec<size_t> SelectVBSJets_invmass(rvec_f pt, rvec_f eta, rvec_f phi, rvec_f mas
     return idx;
 }
 
-float GetInvMassNoIndex4(float pt1, float eta1, float phi1, float mass1, float pt2, float eta2, float phi2, float mass2, float pt3, float eta3, float phi3, float mass3, float pt4, float eta4, float phi4, float mass4)
+float GetInvMass(float pt1, float eta1, float phi1, float mass1, float pt2, float eta2, float phi2, float mass2, float pt3, float eta3, float phi3, float mass3, float pt4, float eta4, float phi4, float mass4)
 {
     ROOT::Math::PtEtaPhiMVector p1(pt1, eta1, phi1, mass1);
     ROOT::Math::PtEtaPhiMVector p2(pt2, eta2, phi2, mass2);
@@ -261,17 +214,5 @@ RVec<int> SelectAndVetoTaus(rvec_f Tau_pt, rvec_f Tau_eta, rvec_f Tau_phi, rvec_
     }
     if(nTau!=1) idx[1] = -1;                                                                                               
     return idx;
-}
-
-bool SameCharge(int GoodLeptonFamily, rvec_i Electron_idx, rvec_i Electron_charge, rvec_i Muon_idx, rvec_i Muon_charge, rvec_i Tau_idx, rvec_i Tau_charge){
-    if(GoodLeptonFamily == 0){
-        if(Electron_charge[Electron_idx[0]] == Tau_charge[Tau_idx[0]]) return true;
-        else return false;
-    }
-    else if(GoodLeptonFamily == 1){
-        if(Muon_charge[Muon_idx[0]] == Tau_charge[Tau_idx[0]]) return true;
-        else return false;
-    }
-    return false;
 }
 #endif
